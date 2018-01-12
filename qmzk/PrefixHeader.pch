@@ -1,0 +1,172 @@
+//
+//  PrefixHeader.pch
+//  GZYJ
+//
+//  Created by Mac on 2017/5/8.
+//  Copyright © 2017年 Mac. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//基类
+#import "BaseView.h"
+#import "BaseModel.h"
+#import "BaseViewController.h"
+#import "BaseTabBarController.h"
+#import "BaseNavgationController.h"
+#import "BaseTableViewController.h"
+#import "BaseTableViewCell.h"
+#import "BaseCollectionViewCell.h"
+#import "BaseCollectionViewController.h"
+#import "BaseTableView.h"
+#import "BaseImage.h"
+#import "BaseLable.h"
+#import "BaseAlertController.h"
+#import "ZQTools.h"
+#import "BaseCollectionView.h"
+#import "AppDelegate.h"
+#import "BaseButton.h"
+
+
+
+#import "NSString+ArvinCategory.h"    //把字典的参数转为汉字
+#import "NSString+CZNSStringExt.h"    //计算文字高度
+#import "CBImageCompressor.h"         //图片压缩
+#import "MBProgressHUD.h"
+#import <UIKit/UIKit.h>
+#import "UIImageView+WebCache.h"
+#import "AFNetworking.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
+#import "FTIndicator.h"
+#import <AVFoundation/AVFoundation.h>
+#import <Foundation/Foundation.h>
+#import "BasePanGestureRecognizer.h"    //手势基类
+#import "SGLNavigationViewController.h" //全屏侧滑
+#import "BRPlaceholderTextView.h"  //textview带占位字
+#import<MediaPlayer/MediaPlayer.h>
+#import "WHC_ModelSqlite.h"             //数据库操作
+#import "NSObject+WHC_Model.h"
+#import "HJPhotoBrowser.h"              //图片浏览器
+#import "WRNavigationBar.h"             //navbar隐藏
+#import "UINavigationBar+NavigationBarBackground.h" //navbar隐藏
+
+#import "Masonry.h" //自动布局
+
+
+
+
+
+#pragma mark———————————————————常用宏定义———————————————————
+//类型
+typedef enum {
+    afx  = 0 ,  //爱分享
+    xytd = 1,   //校园田地
+    sshd = 2,   //赛事活动
+    zwyw = 3    //政务要闻
+}LifeCircleListType;
+
+
+
+
+
+
+#pragma mark——————————————通用模型
+#define _reloadOrder @"reloadOrder"  //订单状态改变 刷新订单
+
+
+
+#pragma mark———————————————————常用宏定义———————————————————
+
+//一个公用的block  什么都不会返回
+typedef void (^touchBlock)(void);
+
+
+
+#define K_LOGIN_USERNAME_KEY       @"LoginUsernameKey"//用户名
+#define K_LOGIN_PWD_KEY            @"LoginPasswordKey"//密码
+#define K_LOGIN_JiZhuMiMa_KEY            @"JiZhuMiMaKey"//记住密码
+
+
+
+
+//屏幕宽高
+#define _mainW [UIScreen mainScreen].bounds.size.width
+#define _mainH [UIScreen mainScreen].bounds.size.height
+
+#define _mainWidth [UIScreen mainScreen].bounds.size.width/375
+#define _mainHeight [UIScreen mainScreen].bounds.size.height/667
+
+
+//占位图
+#define _zhanweiImageData     [UIImage imageNamed:@"zhanwei"]
+
+
+//后台返回的状态码 是bool 需要转换
+#define _Success  [[responseObject objectForKey:@"status"] intValue]==1
+
+//每次列表加载的条数
+#define _rows 10
+
+//判断是否是iOS10
+#define IOS_VERSION_10 (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)?(YES):(NO)
+
+//接口根地址
+#define _addressUrl @"http://52.80.81.212:9333"
+//图片根地址
+#define _imgAddressUrl @"http://120.77.242.92:8080"
+
+
+//#define _addressUrl @"http://192.168.2.176:8080/bianmeng/"
+
+
+//主题颜色70 149 253
+#define _backgroundColor  ColorWithRGB(243, 174, 172)
+
+#define _ziTiColor  ColorWithRGB(97.0, 97.0, 97.0)
+
+//navBar颜色
+#define _navColor  ColorWithRGB(32.0, 160.0, 247.0)
+
+//浅灰色
+#define _LightGrey [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:239.0/255.0 alpha:1]
+
+//深灰色
+#define _DarkGrey [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1]
+
+//生活圈标题深蓝色
+#define _shqSLcolor ColorWithRGB(0.0, 149.0, 223.0)
+
+//生活圈标题浅蓝色
+#define _shqQLcolor ColorWithRGB(158.0, 210.0, 251.0)
+
+//rgb颜色快捷
+#define ColorWithRGB(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
+
+//weekSelf
+#define WEAKSELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+
+//获取用户数据单例里德数据模型
+#define _userModel [userShareData sharedUserModel].usermodel
+
+//用户数据模型存的目录
+#define _userModelFile  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0]  stringByAppendingPathComponent:@"userDataModel.data"]
+
+//快捷进入登陆
+#define _login   LoginVc *vc =[[UIStoryboard storyboardWithName:@"LoginVc" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginVc"]; BaseNavgationController *nav =[[BaseNavgationController alloc] initWithRootViewController:vc]; [self presentViewController:nav animated:YES completion:nil];
+//快捷进入登陆 (传VC)
+#define _loginWithVc(A)   LoginVc *vc =[[UIStoryboard storyboardWithName:@"LoginVc" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginVc"]; BaseNavgationController *nav =[[BaseNavgationController alloc] initWithRootViewController:vc]; [A presentViewController:nav animated:YES completion:nil];
+
+
+
+
+#pragma mark————————————百度推送
+#import "BPush.h"
+#define _BDpushKey @"eM6c3ITRGMqUob4FWA2YAfEW"
+
+
+
+
+#endif /* PrefixHeader_pch */
