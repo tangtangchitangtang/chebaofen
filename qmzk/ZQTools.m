@@ -1713,7 +1713,7 @@
     
     
     
-    [manager POST:[NSString stringWithFormat:@"%@/FileUpload/FileUploadController",_imgAddressUrl] parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager POST:[NSString stringWithFormat:@"http://119.84.8.158:55002/chinese/app/uploadImgList"] parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         
         
@@ -1742,6 +1742,8 @@
         
         
         [MBProgressHUD hideHUDForView:view animated:YES];
+        
+        NSLog(@"%@",responseObject);
         
         
         BOOL success=[[responseObject objectForKey:@"success"] boolValue];

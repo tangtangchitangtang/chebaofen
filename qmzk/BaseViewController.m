@@ -82,7 +82,7 @@
 //返回上一个界面
 - (void)popVc
 {
-    self.navigationController.navigationBar.hidden=YES;
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

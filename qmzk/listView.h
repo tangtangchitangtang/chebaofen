@@ -8,6 +8,9 @@
 
 #import "BaseView.h"
 
-@interface listView : BaseView
+@interface listView : BaseView<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)NSMutableArray *tableArr;
+@property(nonatomic,strong)BaseTableView *tabView;
+-(void)creatView;
 
 @end

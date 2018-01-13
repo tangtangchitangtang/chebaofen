@@ -10,4 +10,5 @@
 
 @interface goodsView : BaseView
 
+-(void)creatView;
 @end

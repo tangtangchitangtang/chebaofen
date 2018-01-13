@@ -154,6 +154,8 @@ typedef void (^touchBlock)(void);
 //用户数据模型存的目录
 #define _userModelFile  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0]  stringByAppendingPathComponent:@"userDataModel.data"]
 
+#define _userYouJiFile  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0]  stringByAppendingPathComponent:@"YouJi.data"]
+
 //快捷进入登陆
 #define _login   LoginVc *vc =[[UIStoryboard storyboardWithName:@"LoginVc" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginVc"]; BaseNavgationController *nav =[[BaseNavgationController alloc] initWithRootViewController:vc]; [self presentViewController:nav animated:YES completion:nil];
 //快捷进入登陆 (传VC)

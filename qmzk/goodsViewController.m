@@ -7,16 +7,24 @@
 //
 
 #import "goodsViewController.h"
+#import "goodsView.h"
 
 @interface goodsViewController ()
-
+@property(nonatomic,strong)goodsView *aView;
 @end
 
 @implementation goodsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title=@"商品余数";
+    _aView=[goodsView new];
+    [self.view addSubview:_aView];
+    [_aView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(0);
+    }];
+    [_aView creatView];
+    _aView.viewController=self;
 }
 
 - (void)didReceiveMemoryWarning {

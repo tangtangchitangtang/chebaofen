@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface listViewController : BaseViewController
+@property(nonatomic,strong)NSNumber *numBer;
 
 @end

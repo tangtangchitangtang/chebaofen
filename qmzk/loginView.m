@@ -145,14 +145,16 @@
     
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:nameStr,@"sellerName",pwdStr,@"sellerPwd",nil];
+
     
-    [ZQTools AFNGetDataUrl:@"seller/slogin" Dict:dict andTableView:nil andView:self andSuccessBlock:^(id responseObject) {
+    [ZQTools AFNPOSTDataUrl:@"seller/slogin" Dict:dict andTableView:nil andView:self andSuccessBlock:^(id responseObject) {
         
     
         [NSKeyedArchiver archiveRootObject:responseObject toFile:_userModelFile];
     
-        shouYeViewController *login=[[shouYeViewController alloc] init];
-        [ZQTools pushNextViewController:self.viewController andRootController:login];
+        shouYeViewController *wodeView=[[shouYeViewController alloc] init];
+        UINavigationController *nav1= [[UINavigationController alloc] initWithRootViewController:wodeView];
+        self.window.rootViewController=nav1;
     
     } anderrorBlock:nil];
     

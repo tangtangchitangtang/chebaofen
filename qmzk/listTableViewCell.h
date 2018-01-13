@@ -9,5 +9,6 @@
 #import "BaseTableViewCell.h"
 
 @interface listTableViewCell : BaseTableViewCell
-
+@property(nonatomic,strong)NSDictionary *dic;
+-(float)creatView;
 @end

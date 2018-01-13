@@ -8,6 +8,9 @@
 
 #import "BaseView.h"
 
-@interface commentView : BaseView
-
+@interface commentView : BaseView<UITableViewDataSource,UITableViewDelegate>
+@property(nonatomic,strong)BaseTableView *tableView;
+@property(nonatomic,strong)NSNumber *totalPages;
+@property(nonatomic,strong)NSMutableArray *tableArr;
+-(void)creatView;
 @end
